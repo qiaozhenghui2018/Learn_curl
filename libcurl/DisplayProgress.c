@@ -4,6 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+int ShowProgress(void *clientp, double dltotal, double dlnow, double ultotal, double ulnow)
+{
+	printf("[%s-%d]---------->dltotal:%g, dlnow:%g, ultotal:%g, ulnow:%g, progress:%g\n", __FUNCTION__, __LINE__, dltotal, dlnow, ultotal, ulnow, (dlnow*100)/dltotal);
+	
+	return 0;
+}
+
 size_t WriteHeader(char *buffer,   size_t size,   size_t nitems,   void *userdata)
 {
 	fwrite(buffer, size, nitems, (FILE*)userdata);
@@ -63,6 +70,12 @@ int main(int argc, char *argv[])
 	curl_easy_setopt(psCurlHandle, CURLOPT_WRITEFUNCTION, WriteBody);
 
 	curl_easy_setopt(psCurlHandle, CURLOPT_WRITEDATA, (void*)psContent);
+
+	curl_easy_setopt(psCurlHandle, CURLOPT_PROGRESSFUNCTION, (void*)ShowProgress);
+	
+	curl_easy_setopt(psCurlHandle, CURLOPT_PROGRESSDATA, NULL);
+	
+	curl_easy_setopt(psCurlHandle, CURLOPT_NOPROGRESS, 0);
 
 	ret = curl_easy_perform(psCurlHandle);
 
