@@ -82,6 +82,8 @@ int main(int argc, char *argv[])
 	
 	curl_easy_setopt(psCurlHandle, CURLOPT_PROGRESSDATA, NULL);
 	
+	curl_easy_setopt(psCurlHandle, CURLOPT_VERBOSE, 1);
+
 	curl_easy_setopt(psCurlHandle, CURLOPT_NOPROGRESS, 0);
 
 	ret = curl_easy_perform(psCurlHandle);
