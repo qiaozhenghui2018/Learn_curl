@@ -1,4 +1,11 @@
 
+/*
+*
+*./a.out www.sina.com.cn header.log sina.html
+*
+*
+*/
+
 #include <stdio.h>
 #include <curl/curl.h>
 #include <stdlib.h>
