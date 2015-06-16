@@ -1,0 +1,16 @@
+#! bin/sh
+
+#HELLO="world"
+#WORLD="hello"
+
+#printf "%s,%s\n\n\n" $HELLO $WORLD
+
+
+printf "Enter the password \n"
+stty -echo
+read PASSWORD < /dev/tty1
+printf "Enter the password again \n"
+read PASSWORD_AGAIN < /dev/tty1
+stty echo
+
+

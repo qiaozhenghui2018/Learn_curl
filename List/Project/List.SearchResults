@@ -1,0 +1,5 @@
+---- FindNode Matches (4 in 2 files) ----
+List.c (z:\list):Node_S* FindNode(NodeData_S sData, Node_S *psHead)
+List.c (z:\list):	psNodeTemp = FindNode(sData, psHead);
+List.c (z:\list):    psNodeTemp = FindNode(sData, psHead);
+List.h (z:\list):Node_S* FindNode(NodeData_S sData, Node_S *psHead);
