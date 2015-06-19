@@ -1,5 +1,5 @@
 
-TARGET=main.out
+TARGET=ts_read
 PRJPATH=./
 
 CFLAGS=-I $(PRJPATH)/include
