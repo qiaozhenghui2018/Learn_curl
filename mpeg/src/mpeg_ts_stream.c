@@ -97,25 +97,4 @@ int mpeg_ts_stream_read(char *pcStreamPath)
 }
 
 
-/*
-*./a.out stream.ts logpath
-*/
-int main(int argc, char *argv[])
-{
-    int i = 0;
-    int j = 0;
-
-    for(i=0; i<argc; i++)
-    {
-        printf("--->argv[%d] = %s\n", i, argv[i]);
-    }
-
-    mpeg_ts_steam_Init(argv[2]);
-
-    mpeg_ts_stream_read(argv[1]);
-
-    return 0;
-}
-
-
 
