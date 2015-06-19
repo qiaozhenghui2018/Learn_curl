@@ -35,7 +35,7 @@ int mpeg_ts_steam_Init(char *pcLogPath)
         return -1;
     }
 
-    snprintf(sacLogPath, strlen(pcLogPath), "%s/%s", pcLogPath, "mpeg_ts_stream.log");
+    snprintf(sacLogPath, sizeof(sacLogPath), "%s/%s", pcLogPath, "mpeg_ts_stream.log");
 
     return 0;
 }
@@ -73,7 +73,7 @@ static int mpeg_ts_steam_WriteLogFile(char *pcString)
 
     if(pfLogFile == NULL)
     {
-        printf("[%s-%d]---------------->error\n", __FUNCTION__, __LINE__);
+        printf("[%s-%d]---------------->error, sacLogPath=%s\n", __FUNCTION__, __LINE__, sacLogPath);
         return 0;
     }
 

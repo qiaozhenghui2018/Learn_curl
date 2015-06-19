@@ -69,7 +69,7 @@ int mpeg_ts_stream_read(char *pcStreamPath)
         }
     }
 
-    for(j=0; j<lStreamLen-i-1; j++)
+    for(j=0; j<(lStreamLen-i-1)/mpeg_ts_stream_packet_len; j++)
     {
         fseek(psStreamhandle, i+j*mpeg_ts_stream_packet_len, SEEK_SET);
         

@@ -10,5 +10,5 @@ TARGET:$(SOURCE)
 	gcc $(CFLAGS) $(SOURCE) -o $(TARGET)
 
 clean:
-	rm $(TARGET)
-
+	-rm -f $(TARGET)
+	-rm -f *.log
