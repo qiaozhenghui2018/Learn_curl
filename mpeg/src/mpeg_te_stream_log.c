@@ -26,25 +26,31 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 #include "mpeg_ts_stream_log.h"
 
 static int mpeg_ts_steam_WriteLogFile(char *pcString);
 static char sacLogPath[256] = {0};
 
-int mpeg_ts_steam_Init(char *pcLogPath)
-{
+int mpeg_ts_steam_LogInit(char *pcLogPath)
+{    
     if(pcLogPath == NULL)
     {
         return -1;
     }
 
-    snprintf(sacLogPath, sizeof(sacLogPath), "%s/%s", pcLogPath, "mpeg_ts_stream.log");
+    snprintf(sacLogPath, sizeof(sacLogPath), "%s", pcLogPath);
+
+    if(access(sacLogPath, F_OK) == 0)
+    {
+        remove(sacLogPath);
+    }
 
     return 0;
 }
 
-int mpeg_ts_steam_write(char *Format_p, ...)
+int mpeg_ts_steam_Printf(char *Format_p, ...)
 {
     va_list ap;
     static unsigned char asuc_string[2048] = {0};
