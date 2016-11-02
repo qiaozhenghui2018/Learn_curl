@@ -1,29 +1,30 @@
 
-#include <stdio.h>
+#include <iostream>
 
 using namespace std;
 
 class ConstructionTest
 {
-public
-	int ConstructionTest()
+    /*static */int i;
+    public:
+	ConstructionTest()
 	{
-		cout<<"qiaozhenghui created"<<endl;;
-		
-		return 0;
-	}
+        i=0;
+        i++;
+		cout<<"qiaozhenghui created"<<"  i=%d"<<i<<endl;
+	};
 
-	int ConstructionTest(ConstructionTest &Test)
+	ConstructionTest(ConstructionTest &Test)
 	{
-		cout<<"qiaozhenghui copy"<<endl;	
-		return 0;
-	}
+        i++;
+		cout<<"qiaozhenghui copy"<<"   i=%d"<<i<<endl;	
+	};
 
-	void ~ConstructionTest()
+    ~ConstructionTest()
 	{
 		cout<<"remove"<<endl;	
-	}
-private
+	};
+    private:
 	string m_sName;
 };
 
@@ -31,8 +32,10 @@ int main(void)
 {
 	ConstructionTest Test1;
 	ConstructionTest Test2 = Test1;
-	ConstructionTest Test(3);
-
+	ConstructionTest Test(Test1);
+    
+    string s1 = "qiaozhenghui";
+    cout<<"sizeof string="<<s1  
 	return 0;
 	
 }
