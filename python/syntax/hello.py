@@ -1,7 +1,6 @@
 # print("hello world")
 
-# age = 27
-# name = 'qiaozhenghui'
+# age = 24
 
 # print("{0} is {1} years old when he start to learn python".format(name, age))
 # print("{0} is learning python now".format(name))
@@ -17,7 +16,7 @@
 
 # print(r"newlines is indicated by \n")
 
-# num = 27
+# num = 24
 # num_in = int(input('input the judge number:'))
 
 # if num == num_in :
@@ -30,7 +29,7 @@
 flag = True
 while flag:
     age = int(input("input your age:"))
-    if age == 27:
+    if age == 24:
         flag = False
     else:
         continue

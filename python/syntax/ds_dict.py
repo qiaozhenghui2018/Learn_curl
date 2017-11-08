@@ -12,7 +12,7 @@ email.__delitem__('hua')
 
 print("email number is ", len(email))
 
-email['qiaozhenghui'] = 'qiaozhenghui@163.com'
+email['joe_ori'] = 'joe_ori@163.com'
 
 print("email number is ", len(email))
 

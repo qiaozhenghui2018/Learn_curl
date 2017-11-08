@@ -1,5 +1,5 @@
 
-name = ['huachao', 'qiaozhenghui', 'joe']
+name = ['huachao', 'joe_ori', 'joe']
 
 print("item 0 is", name[0])
 print("item 2 is", name[2])
