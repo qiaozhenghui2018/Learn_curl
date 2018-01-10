@@ -2,20 +2,20 @@ from bs4 import BeautifulSoup
 import urllib2
 
 def getPage(href):
-    headers = {'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11'}
+    headers = {u'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.8.1.11) Gecko/20071127 Firefox/3.0.0.11'}
 
     req = urllib2.Request(url = href, headers = headers)
 
     try:
         post = urllib2.urlopen(req)
 
-    except urllib2.HTTPError, e:
-        print e.code
-        print e.reason
+    except urllib2.HTTPError as e:
+        print(e.code)
+        print(e.reason)
 
     return post.read()
 
-url = 'http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html'
+url = u'http://kaijiang.zhcw.com/zhcw/html/ssq/list_1.html'
 
 def getPageNum(url):
     num = 0
@@ -23,13 +23,13 @@ def getPageNum(url):
     soup = BeautifulSoup(page)
     strong = soup.find('td', colspan='7')
 
-    print strong
+    print(strong)
 
     if strong:
         result = strong.get_text().split(' ')
-        print result
+        print( result)
         list_num = re.findall("[0-9]{1}", result[1])
-        print list_num
+        print(list_num)
         
         for i in range(len(list_num)):
             num = num*10 + int(list_num[i])
@@ -40,9 +40,9 @@ def getPageNum(url):
 
 def getText(url):
     for list_num in range(1, getPageNum(url)):
-        print list_num
+        print(list_num)
         
-        href = 'http://kaijiang.zhcw.com/zhcw/html/ssq/list_' + str(list_num) + '.html'
+        href = u'http://kaijiang.zhcw.com/zhcw/html/ssq/list_' + str(list_num) + '.html'
 
         page = BeautifulSoup(getPage(url))
 
