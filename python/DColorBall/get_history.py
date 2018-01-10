@@ -2,7 +2,10 @@ from bs4 import BeautifulSoup
 import urllib2
 
 def getPage(href):
-    headers = {u'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.8.1.11) Gecko/20071127 Firefox/3.0.0.11'}
+    '''
+    headers = {u'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.8.1.11) Gecko/20071124 Firefox/3.0.0.11'}
+    '''
+    headers = {}
 
     req = urllib2.Request(url = href, headers = headers)
 
