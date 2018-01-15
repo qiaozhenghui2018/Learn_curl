@@ -26,12 +26,13 @@ def getPageNum(url):
     soup = BeautifulSoup(page)
     strong = soup.find('td', colspan='7')
 
-    print(strong)
+    print("strong=",strong)
 
     if strong:
         result = strong.get_text().split(' ')
-        print( result)
-        list_num = re.findall("[0-9]{1}", result[1])
+        print('result=',result)
+        return 111
+        list_num = result.find("[0-9]{1}", result[1])
         print(list_num)
         
         for i in range(len(list_num)):
@@ -42,20 +43,29 @@ def getPageNum(url):
         return 0
 
 def getText(url):
-    for list_num in range(1, getPageNum(url)):
+    fp = open('history.log', 'w')
+    
+    for list_num in range(1, getPageNum(url)+1):
+        '''
         print(list_num)
-        
+        '''
         href = u'http://kaijiang.zhcw.com/zhcw/html/ssq/list_' + str(list_num) + '.html'
+        print('href = ', href)
 
         page = BeautifulSoup(getPage(url))
-
+        '''
+        print('page=', page)
+        '''
         em_list = page.find_all('em')
+        '''
         div_list = page.find_all('td', {'align':'center'})
-
+        '''
+        '''
+        print('em_list', em_list)
+        print('div_list', div_list)
+        '''
         n = 0
 
-        fp = open('history.log', 'w')
-        
         for div in em_list:
             text = div.get_text()
             text = text.encode('utf-8')
@@ -68,7 +78,7 @@ def getText(url):
             else:
                 text = text + ','
             fp.write(str(text))
-        fp.close()
+    fp.close()
 
 getText(url)
 
