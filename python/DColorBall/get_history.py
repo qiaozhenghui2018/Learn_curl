@@ -2,12 +2,15 @@ from bs4 import BeautifulSoup
 import urllib2
 
 def getPage(href):
-    '''
+    
     headers = {u'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.8.1.11) Gecko/20071124 Firefox/3.0.0.11'}
+    
+    '''headers = {}
     '''
-    headers = {}
-
-    req = urllib2.Request(url = href, headers = headers)
+    '''
+    print('get page url =', href)
+    '''
+    req = urllib2.Request(url = href)
 
     try:
         post = urllib2.urlopen(req)
@@ -43,7 +46,6 @@ def getPageNum(url):
         return 0
 
 def getText(url):
-    fp = open('history.log', 'w')
     
     for list_num in range(1, getPageNum(url)+1):
         '''
@@ -52,11 +54,12 @@ def getText(url):
         href = u'http://kaijiang.zhcw.com/zhcw/html/ssq/list_' + str(list_num) + '.html'
         print('href = ', href)
 
-        page = BeautifulSoup(getPage(url))
+        page = BeautifulSoup(getPage(href))
         '''
         print('page=', page)
         '''
         em_list = page.find_all('em')
+        date_list = page.find_all('td', {'align':'center'})
         '''
         div_list = page.find_all('td', {'align':'center'})
         '''
@@ -64,21 +67,27 @@ def getText(url):
         print('em_list', em_list)
         print('div_list', div_list)
         '''
+        '''
+        print(date_list)
+        '''
         n = 0
-
+        m = 0
         for div in em_list:
             text = div.get_text()
             text = text.encode('utf-8')
 
             n = n + 1
-
+            '''print (date_list[5*m])
+            '''
+            m += 1
+            
             if n==7:
                 text = text + '\n'
                 n = 0
             else:
-                text = text + ','
+                text = text +  ','
             fp.write(str(text))
-    fp.close()
 
+fp = open('history.log', 'w')
 getText(url)
-
+fp.close()
